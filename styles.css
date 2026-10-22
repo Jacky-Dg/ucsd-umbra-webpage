@@ -1,0 +1,125 @@
+body{
+	margin: 0;
+	padding: 0;
+
+	color: #FDFEFF;
+}
+
+/*** NAVBAR ***/
+.header {
+	width: 100vw;
+	height: 8em;
+
+	display: flex;
+	position: fixed;
+
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #FDFEFF;
+}
+
+/* Logo & Title */
+.nav-title-logo {
+	display: flex;
+	margin-right: auto;
+}
+
+.nav-logo {
+	max-width: 100%;
+	height: auto;
+	display: block;
+
+	margin-left: 2em;
+	padding: 1em 0.5em 1em 1.5em;
+	
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+.nav-logo img {
+	height: 100%;
+	width: 100%;
+
+	border-radius: 50%;
+	border: 2px solid #FFCD00;
+	box-shadow: 2px 2px 4px black;
+
+	object-fit: cover;
+}
+
+.nav-title {
+	color: black;
+
+	-webkit-text-stroke: 0.75px #FDFEFF;
+	font-size: 28px;
+	text-shadow: 1px 1px 2px black;
+
+	align-self: center;
+	flex: 1;
+}
+
+.nav-title span {
+	color: #182B49;
+	-webkit-text-stroke: 0.75px #FFCD00;
+}
+
+/* Nav Items */
+.nav {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+ul {
+	margin-left: auto;
+	margin-right: 2.2em;
+
+	display: flex;
+	gap: 1.5em;
+
+	font-size: 18px;
+	font-family: monospace, 'helvetica', sans-serif;
+	list-style-type: none;
+}
+
+.nav-link {
+	text-shadow: 1px 1px 2px dimgray;
+}
+
+.nav-link.active {
+	text-decoration: underline;
+	text-underline-offset: 0.33em;
+}
+
+.nav-link:hover {
+	opacity: 0.8;
+}
+
+/*** PAGE CONTENT ***/
+/* Background Image */
+.background-image {
+	width: 100vw;
+	height: 75vh;
+
+	background-image: url('https://t3.ftcdn.net/jpg/09/19/32/84/360_F_919328414_xyvSydJRkrzOKyeD7WCqOVWJq4EcWXTl.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.background-image:hover.header{
+	background-color: rgba(128, 128, 0, 0);
+}
+
+/* Utility Classes */
+/* When the screen size shrinks, doesnt break the structure of the page */
+.no-overflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Removes underline and purple color */
+.links {
+	text-decoration: none;
+	color: inherit;
+}
