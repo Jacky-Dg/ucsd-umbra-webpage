@@ -6,15 +6,23 @@ body{
 /*** NAVBAR ***/
 .header {
 	width: 100vw;
-	height: 6.5rem;
+	height: 7rem;
 
 	display: flex;
 	position: fixed;
+	z-index: 9999;
 
-	background-color: rgba(0, 0, 0, 0.75);
+	font-family: 'Orbitron';
+
 	color: #ECEFF1; /*#FF5722*/
 
 	transition: transform 0.5s ease-in-out;
+
+	background: rgba(0, 0, 0, 0.25); 
+	backdrop-filter: blur(12px);           
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.3);  /* Adds a bottom border */
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Logo */
@@ -40,7 +48,7 @@ body{
 	width: 100%;
 
 	border-radius: 50%;
-	border: 2px solid #000000;
+	border: 3px solid #FFFFFF;
 	box-shadow: 2px 2px 4px black;
 
 	object-fit: cover;
@@ -60,7 +68,6 @@ body{
 
 .nav-title span {
 	color: #182B49;
-	font-family: times-new-roman;
 	-webkit-text-stroke: 0.75px #FFCD00;
 }
 
@@ -78,18 +85,38 @@ body{
 	display: flex;
 	gap: 1.5rem;
 
-	font-size: 16px;
-	font-family: monospace, 'helvetica', sans-serif;
+	font-size: 18px;
+	font-family: 'Orbitron';
 	list-style-type: none;
 }
 
-.nav-link.active {
-	text-decoration: underline;
-	text-underline-offset: 0.33rem;
+.nav-link {
+	display: inline-block;
+	position: relative;
 }
 
-.nav-link:hover {
-	opacity: 0.8;
+/* Underline Animation */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;                 
+  top: 100%;
+  left: 0;
+
+  background-color: #ECEFF1;
+
+  transform: scaleX(0);        
+  transform-origin: left; 
+  transition: transform 0.2s ease-out; 
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1); 
+}
+
+.primary::after {
+	transform: scaleX(1);
 }
 
 /*** PAGE CONTENT ***/
@@ -97,7 +124,6 @@ body{
 .background-image {
 	width: 100vw;
 	height: 100vh;
-
 
 	background-image: url('images/background-image2.avif');
 	background-size: cover;
@@ -111,7 +137,7 @@ body{
 	min-height: 100vh;
 
 	background-color: #000000;
-	color: #FF5722;
+	color: darkolivegreen;
 
 	display: flex;
 	flex-direction: column;
@@ -121,17 +147,26 @@ body{
 .main-content {
 	display: flex;
 
+	padding: 2rem;
+	gap: 3rem;
+	margin: auto 6rem auto 6rem;
+
 	justify-content: center;
-	gap: 4rem;
 }
 
 .side-content-wrapper {
-	flex: 1;
+	position: relative;
+
 	flex-shrink: 0;
 }
 
-
 .content-title {
+	margin-top: 3rem;
+
+	font-size: 36px;
+	font-family: 'Orbitron', sans-serif;
+
+	color: white;
 	align-self: center;
 }
 
@@ -141,12 +176,9 @@ body{
 	height: auto;
 	box-sizing: border-box;
 
-	padding-right: 4rem;
-	padding-bottom: 8rem;
-
 	color: #ECEFF1;
 
-	font-size: 32px;
+	font-size: 46px;
 	font-family: 'Orbitron', sans-serif;
 
 	flex: 1;
@@ -164,6 +196,12 @@ body{
 .links {
 	text-decoration: none;
 	color: inherit;
+}
+/* Adds underline */
+.underline {
+	text-decoration: underline;
+	text-underline-offset: 1rem;
+	text-decoration-thickness: 2px; 
 }
 
 /* Animations */
