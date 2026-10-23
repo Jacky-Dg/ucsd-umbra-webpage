@@ -12,7 +12,9 @@ body{
 	position: fixed;
 
 	background-color: rgba(0, 0, 0, 0.75);
-	color: darkolivegreen;
+	color: #ECEFF1; /*#FF5722*/
+
+	transition: transform 0.5s ease-in-out;
 }
 
 /* Logo */
@@ -38,7 +40,7 @@ body{
 	width: 100%;
 
 	border-radius: 50%;
-	border: 2px solid #FFCD00;
+	border: 2px solid #000000;
 	box-shadow: 2px 2px 4px black;
 
 	object-fit: cover;
@@ -81,10 +83,6 @@ body{
 	list-style-type: none;
 }
 
-.nav-link {
-	text-shadow: 0.5px 0.5px 2px olivedrab;
-}
-
 .nav-link.active {
 	text-decoration: underline;
 	text-underline-offset: 0.33rem;
@@ -100,31 +98,11 @@ body{
 	width: 100vw;
 	height: 100vh;
 
-	background-image: url('https://t3.ftcdn.net/jpg/09/19/32/84/360_F_919328414_xyvSydJRkrzOKyeD7WCqOVWJq4EcWXTl.jpg');
+
+	background-image: url('images/background-image2.avif');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-
-	display: flex;
-	text-align: center;
-}
-
-.background-image-text {
-	margin: auto 2em 3em 2em;
-
-	color: black;
-
-	-webkit-text-stroke: 0.75px #FDFEFF;
-	font-size: clamp(4rem, 4vw, 6rem);
-	text-shadow: 1px 1px 2px black;
-
-	flex: 1;
-}
-
-.background-image-text span {
-	color: #182B49;
-	font-family: times-new-roman;
-	-webkit-text-stroke: 0.75px #FFCD00;
 }
 
 /* About Us Section */
@@ -186,4 +164,15 @@ body{
 .links {
 	text-decoration: none;
 	color: inherit;
+}
+
+/* Animations */
+.animate-fadeIn {
+	animation: fadeIn linear;
+	animation-timeline: view();
+	animation-range: entry 0% cover 40%;
+}
+
+.transition-disappear {
+	transform: translateY(-100%);
 }
