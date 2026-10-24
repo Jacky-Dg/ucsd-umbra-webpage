@@ -1,4 +1,4 @@
-body{
+html, body{
 	width: 100vw;
 	height: 100vh;
 
@@ -23,7 +23,6 @@ body.lock-scroll {
 	cursor: none;
 
 	position: absolute;
-	isolation: isolate;
 }
 
 .shutter {
@@ -78,6 +77,8 @@ body.lock-scroll {
 
     --mouse-x: -500px;
     --mouse-y: -500px;
+
+    user-select: none;
 }
 
 .title-dim {
@@ -90,16 +91,36 @@ body.lock-scroll {
     inset: 0;
 
     filter:
-        brightness(2.5);
+        brightness(3);
 
     pointer-events: none;
 
     mask-image: radial-gradient(
-        circle 200px at var(--mouse-x) var(--mouse-y),
-        black 40%,
-        transparent 100%
+        ellipse 150px 150px at var(--mouse-x) var(--mouse-y),
+		    black 40%,
+		    transparent 100%
     );
 }
+
+/* Not in Use */
+/*.title-rays {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    filter:
+        brightness(3)
+        drop-shadow(0 -3px 5px rgba(255, 255, 255, 0.5));
+
+    pointer-events: none;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0, 0, 0, 0.6) 30%,
+        transparent 75%
+    );
+}*/
 
 .flashlight-title .ucsd {
     color: #0A121F;
@@ -111,6 +132,57 @@ body.lock-scroll {
     -webkit-text-fill-color: black;
     -webkit-text-stroke: 0.75px white;
 }
+
+.click-hint {
+		max-width: 10rem;
+
+    position: absolute;
+    top: 41%;
+    left: 41%;
+
+    display: flex;
+    align-items: center;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+
+    opacity: 0.7;
+    z-index: 1;
+    pointer-events: none;
+
+    animation: hint-float 2s ease-in-out infinite;
+    transition: opacity 0.2s ease-in-out;
+
+    text-align: center;
+}
+
+.click-arrow {
+    font-size: 40px;
+    color: #FFCD00;
+
+    text-shadow: 0 0 12px rgba(255, 205, 0, 0.6);
+}
+
+@keyframes hint-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.shutter-container:has(.ucsd:hover) .click-hint,
+.shutter-container:has(.umbra:hover) .click-hint {
+    opacity: 0;
+}
+
+/*.flashlight-title:hover .click-hint{
+	transform: translateY(-1000000%);
+}*/
 
 /*** NAVBAR ***/
 .header {
@@ -396,37 +468,7 @@ body.lock-scroll {
 	transition: transform 2.75s 0.5s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-/*** REACT COMPONENTS ***/
-.glow-cursor {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.glow-cursor__canvas {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  user-select: none;
-}
-
-.glow-cursor__content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
-
-#react-root {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
+/* Page Order Indexes */
 .z-1 {
 	z-index: 1;
 }
@@ -454,3 +496,65 @@ body.lock-scroll {
 .move-to-back {
 	z-index: -1;
 }
+
+/*** REACT COMPONENTS ***/
+
+#react-root {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.light-particles-layer,
+.glow-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.light-particles-layer {
+    z-index: 1;
+}
+
+.glow-layer {
+    z-index: 2;
+}
+
+.light-rays,
+.glow-cursor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.light-rays__canvas,
+.glow-cursor__canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Particles */
+.particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particles-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-import './styles.css';
+import '../styles.css';
 
 const VERTEX = `#version 300 es
 in vec2 aPosition;
