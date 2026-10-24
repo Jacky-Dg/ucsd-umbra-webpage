@@ -15,30 +15,33 @@ window.addEventListener("scroll", () => {
 
 
 const titleButton = document.querySelector('.shutter-title h1');
+const background = document.querySelector('.background-image');
+const navigation = document.querySelector('.header');
 document.body.classList.add('lock-scroll');
 
 titleButton.addEventListener('click', () => {
+  titleButton.classList.add('default-cursor');
   titleButton.classList.add('animate-fadeOut');
+  background.classList.add('animate-fullOpacity');
 
   const items = document.querySelectorAll('.shutter');
   const topHalf = 5;
+  let count = 0;
 
   items.forEach((item, index) => { 
     const shutterClass = index < topHalf ? 'top' : 'bot';
     item.classList.add(shutterClass);
 
-    item.addEventListener('animationend', () => {
-      item.classList.remove(shutterClass); 
-    }, { once: true });
-
     item.addEventListener('transitionend', () => {
-      document.body.classList.remove('lock-scroll');
-    }, { once: true });
-  });
+      count++;
 
-  titleButton.addEventListener('animationend', () => {
-    titleButton.classList.remove('animate-fadeOut'); 
-  }, { once: true });
+      if(count >= topHalf){
+        document.body.classList.remove('lock-scroll');
+        titleButton.classList.add('move-to-back');
+        navigation.classList.remove('hidden');
+      }
+    });
+  });
 });
 
 // NOTES:
