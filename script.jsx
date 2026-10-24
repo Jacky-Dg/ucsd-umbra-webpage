@@ -1,3 +1,24 @@
+/*** REACT COMPONENTS ***/
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import GlowCursor from './GlowCursor.jsx';
+
+const container = document.getElementById('react-root');
+const root = createRoot(container);
+
+root.render(
+  <GlowCursor
+      color="#FFCD00"
+      secondaryColor="#182B49"
+      intensity={2}
+      trailWidth={5}
+      glow={1.5}
+      quality="medium"
+      followSpeed={0.2}
+  />
+
+);
+
 const navbar = document.querySelector(".header");
 let lastScrollY = window.scrollY;
 
@@ -15,8 +36,23 @@ window.addEventListener("scroll", () => {
 
 
 const titleButton = document.querySelector('.shutter-title h1');
+
+const title = document.querySelector('.flashlight-title');
+
+window.addEventListener('pointermove', (event) => {
+    const rect = title.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    title.style.setProperty('--mouse-x', `${x}px`);
+    title.style.setProperty('--mouse-y', `${y}px`);
+});
+
+const shutter = document.querySelector('.shutter-container');
 const background = document.querySelector('.background-image');
 const navigation = document.querySelector('.header');
+
 document.body.classList.add('lock-scroll');
 
 titleButton.addEventListener('click', () => {
@@ -35,14 +71,20 @@ titleButton.addEventListener('click', () => {
     item.addEventListener('transitionend', () => {
       count++;
 
-      if(count >= topHalf){
+      if(count >= topHalf) {
         document.body.classList.remove('lock-scroll');
         titleButton.classList.add('move-to-back');
         navigation.classList.remove('hidden');
+
+        root.unmount();
       }
-    });
+
+      if(count === (2*topHalf)) {
+        shutter.classList.add('move-to-back');
+      }
+    }, { once: true });
   });
-});
+}, {once: true} );
 
 // NOTES:
 /***

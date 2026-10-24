@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -34,9 +35,9 @@
 	>
 </head>
 
-<body>
+<body class="default-cursor">
 	<!-- Shutter -->
-	<div class="shutter-container">
+	<div class="shutter-container z-3">
 		<div class="shutter delay-4"></div>
 		<div class="shutter delay-2"></div>
 		<div class="shutter delay-1"></div>
@@ -49,14 +50,25 @@
 		<div class="shutter delay-2"></div>
 		<div class="shutter delay-4"></div>
 
-		<div class="nav-title shutter-title">
-			<h1><span>UCSD</span>UMBRA</h1>
+		<div class="nav-title shutter-title z-5">
+			<h1 class="flashlight-title">
+			    <span class="title-dim">
+			        <span class="ucsd">UCSD</span><span class="umbra">UMBRA</span>
+			    </span>
+
+			    <span class="title-lit" aria-hidden="true">
+			        <span class="ucsd">UCSD</span><span class="umbra">UMBRA</span>
+			    </span>
+			</h1>
 		</div>
+
+		<!-- REACT COMPONENT -->
+		<div id="react-root" class='z-4'></div>
 	</div>
 
 
 	<!-- Navbar -->
-	<div class="header hidden">
+	<div class="header hidden z-6">
 		<!-- Navbar Logo -->
 		<div class="nav-title-logo">
 			<div class="nav-logo">
@@ -104,7 +116,7 @@
 	</div>
 
 	<!-- Background Image -->
-	<div class="background-image"></div>
+	<div class="background-image z-6"></div>
 
 	<!-- About Us Section -->
 	<div class="content-wrapper">
@@ -125,7 +137,9 @@
 		</div>
 	</div>
 
-	<script src="script.js"></script>
+	<script type="module" 
+			src="/script.jsx">
+	</script>
 </body>
 
 </html>
