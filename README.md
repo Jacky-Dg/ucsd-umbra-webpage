@@ -1,16 +1,22 @@
-# React + Vite
+# UMBRA at UC San Diego
+An interactive website built for UMBRA at UC San Diego. Intended to introduce UMBRA and showcase its past/current projects alongside its current members. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It features a space-inspired design and has custom animations + reactive visual effects.
 
-Currently, two official plugins are available:
+## Technologies Used
+Built with React, Vite, JavaScript, HTML, and CSS.
+ * React - Used for the animated, interactive visual components
+ * ReactBits - Animated visual effects
+ * Vite - Development server and build tool
+ * GitHub Pages - Hosting the website and development
+ * JavaScript - Website functionality and user interactions
+ * HTML5 - Page structure
+ * CSS3 - Styling, transitions, and animations
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Deployment
+The website is deployed using GitHub Pages and built with Vite.
 
-## React Compiler
+Deployment is automated through GitHub Actions, allowing the website to be rebuilt and published when changes are pushed to the configured deployment branch.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+ * Currently does not support mobile!
