@@ -13,10 +13,11 @@ root.render(
   <>
     <div className="glow-layer" style={{ position: 'relative', width: '100%', height: '100%' }}>
       <GlowCursor
-        color="ffffff"
-        intensity={1.3}
-        trailWidth={3}
-        linger={1.4}
+        color="#E85D75"
+        secondaryColor="#3457D5"
+        intensity={0.5}
+        trailWidth={2}
+        linger={1.2}
         glow={1.2}
         clickBurst
         theme="dark"
@@ -54,23 +55,25 @@ root.render(
         />
     </div>*/}
 
+    {/*"#E6F1FF","#E85D75","#4169E1"*/}
+
     <div class="light-particles-layer">
       <Particles
-        particleColors={["#ffffff","#ffffff","#ffffff"]}
-        particleCount={200}
+        particleColors={["#E6F1FF","#E85D75","#4169E1"]}
+        particleCount={1500}
         particleSpread={10}
-        speed={0.1}
+        speed={0.2}
         particleBaseSize={100}
-        glow={0.5}
-        twinkle={0.3}
+        glow={2}
+        twinkle={1}
         moveParticlesOnHover
         hoverEffect="parallax"
-        sizeRandomness={1}
+        sizeRandomness={0.5}
         shape="circle"
-        depthOfField={0}
-        connections={false}
-        connectionDistance={110}
-        particleHoverFactor={1}
+        depthOfField={1}
+        connections={true}
+        connectionDistance={130}
+        particleHoverFactor={2}
         hoverRadius={140}
         drift="none"
         driftSpeed={1}
@@ -86,6 +89,26 @@ root.render(
     </div>
 
   </>
+
+  /* Background for About Section */
+  // import WebThreads from './WebThreads';
+
+  // <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+  //   <WebThreads
+  //     colors={['#5227FF', '#FF9FFC']}
+  //     coreColor="#FFFFFF"
+  //     threadCount={6}
+  //     spread={0.22}
+  //     taper={0.85}
+  //     glow={0.015}
+  //     depth={0.54}
+  //     pulses={0.12}
+  //     fade={0.14}
+  //     grain={0}
+  //     mouseStrength={1}
+  //     shimmer
+  // />
+  // </div>
 );
 
 if ('scrollRestoration' in history) {
@@ -136,14 +159,17 @@ document.body.classList.add('lock-scroll');
 
 titleButton.addEventListener('click', () => {
   titleButton.classList.add('animate-fadeOut');
-  clickMeButton.classList.add('animate-fadeOut')
+  clickMeButton.classList.add('animate-noOpacity')
   background.classList.add('animate-fullOpacity');
+
+  const particles = document.querySelector('.light-particles-layer');
+  particles?.classList.add('zoom-out');
 
   const items = document.querySelectorAll('.shutter');
   const topHalf = 5;
   let count = 0;
 
-  root.unmount();
+  // root.unmount();
 
   items.forEach((item, index) => { 
     const shutterClass = index < topHalf ? 'top' : 'bot';
@@ -156,6 +182,8 @@ titleButton.addEventListener('click', () => {
         document.body.classList.remove('lock-scroll');
         titleButton.classList.add('move-to-back');
         navigation.classList.remove('hidden');
+
+        root.unmount();
       }
 
       if(count === (2*topHalf)) {
